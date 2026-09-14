@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.streamlit/
+\.venv/
+dataset/
+dataset_raw/
+docx_render_check/
+project/
+project.zip
+_bullet_test.pdf
+
+# Keep the trained model and metadata available to the deployed app.
+models/*.h5
+outputs/gradcam/
+outputs/reports/

@@ -1,0 +1,2 @@
+model,loss,warmup_epochs,finetune_epochs,multiclass_accuracy,macro_f1,weighted_f1,binary_accuracy,parameters,inference_ms_per_image
+ResNet50,weighted_ce,3,1,0.8232044198895028,0.5379835073675067,0.8254170544936464,0.9318600368324125,25823121,75.8425634375044

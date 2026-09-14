@@ -1,0 +1,36 @@
+{
+  "class_names": [
+    "broken_end",
+    "broken_pick",
+    "broken_yarn",
+    "clean",
+    "contamination",
+    "crease",
+    "cut_selvage",
+    "fuzzyball",
+    "knots",
+    "nep",
+    "warp_ball",
+    "weft_crack",
+    "weft_curling"
+  ],
+  "model_name": "EfficientNetV2B0",
+  "unknown_confidence_threshold": 0.58,
+  "unknown_margin_threshold": 0.12,
+  "clean_min_confidence": 0.72,
+  "class_descriptions": {
+    "broken_end": "Broken warp end or interrupted longitudinal yarn",
+    "broken_pick": "Broken weft pick or interrupted crosswise yarn",
+    "broken_yarn": "Discontinuity in yarn structure",
+    "clean": "No visible defect detected",
+    "contamination": "Foreign matter, stain, dirt, or surface contamination",
+    "crease": "Fold, wrinkle, or crease visible on the fabric",
+    "cut_selvage": "Cut, torn, or damaged fabric edge",
+    "fuzzyball": "Loose fiber cluster or surface pilling",
+    "knots": "Visible knot in the yarn or fabric surface",
+    "nep": "Small entangled fiber knot on the textile surface",
+    "warp_ball": "Accumulated warp fiber ball on the fabric",
+    "weft_crack": "Gap or crack along the weft direction",
+    "weft_curling": "Curled or distorted weft yarn"
+  }
+}

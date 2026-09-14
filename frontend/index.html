@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textile Defect Intelligence</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">TI</span>
+          <div>
+            <strong>Textile Intelligence</strong>
+            <small>Quality Inspection Console</small>
+          </div>
+        </div>
+
+        <section class="panel model-panel">
+          <div class="panel-head">
+            <h2>Model</h2>
+            <span id="modelStatus" class="pill muted">Checking</span>
+          </div>
+          <div id="modelName" class="model-name">Loading...</div>
+          <div id="classList" class="class-list"></div>
+        </section>
+
+        <section class="panel history-panel">
+          <div class="panel-head">
+            <h2>Recent Inspections</h2>
+          </div>
+          <div id="historyList" class="history-list">
+            <p class="empty">No inspections yet.</p>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="hero">
+          <p>Explainable AI Textile QA</p>
+          <h1>Advanced fabric defect inspection with transparent decisions</h1>
+        </header>
+
+        <section class="grid top-grid">
+          <div class="panel upload-panel">
+            <div class="panel-head">
+              <h2>Inspection Input</h2>
+            </div>
+            <label id="dropzone" class="dropzone">
+              <input id="fileInput" type="file" accept="image/png,image/jpeg" />
+              <span class="drop-title">Drop fabric image here</span>
+              <span class="drop-copy">or choose a JPG / PNG file</span>
+            </label>
+            <div id="previewWrap" class="preview-wrap hidden">
+              <img id="previewImage" alt="Uploaded textile preview" />
+            </div>
+          </div>
+
+          <div class="panel results-panel">
+            <div class="panel-head">
+              <h2>Inspection Result</h2>
+              <span id="decisionPill" class="pill muted">Waiting</span>
+            </div>
+            <div class="metrics">
+              <div>
+                <span>Defect status</span>
+                <strong id="defectStatus">-</strong>
+              </div>
+              <div>
+                <span>Detected class</span>
+                <strong id="detectedClass">-</strong>
+              </div>
+              <div>
+                <span>Confidence</span>
+                <strong id="confidence">-</strong>
+              </div>
+              <div>
+                <span>Quality score</span>
+                <strong id="qualityScore">-</strong>
+              </div>
+            </div>
+            <div class="confidence-track">
+              <span id="confidenceBar"></span>
+            </div>
+            <div class="recommendation">
+              <span>Recommended action</span>
+              <p id="recommendationText">Upload an image to begin inspection.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid bottom-grid">
+          <div class="panel explain-panel">
+            <div class="panel-head">
+              <h2>Explainability</h2>
+            </div>
+            <div id="gradcamWrap" class="media-placeholder">
+              Grad-CAM overlay will appear here.
+            </div>
+          </div>
+
+          <div class="panel probability-panel">
+            <div class="panel-head">
+              <h2>Probability Breakdown</h2>
+            </div>
+            <div id="probabilityList" class="probability-list">
+              <p class="empty">No prediction yet.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel research-panel">
+          <div class="panel-head">
+            <h2>Research Artifacts</h2>
+          </div>
+          <div class="artifact-grid">
+            <div id="curvesArtifact" class="artifact-card">Training curves pending</div>
+            <div id="matrixArtifact" class="artifact-card">Confusion matrix pending</div>
+            <div id="binaryMatrixArtifact" class="artifact-card">Defect detection matrix pending</div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

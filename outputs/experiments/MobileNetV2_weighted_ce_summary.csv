@@ -1,0 +1,2 @@
+model,loss,warmup_epochs,finetune_epochs,multiclass_accuracy,macro_f1,weighted_f1,binary_accuracy,parameters,inference_ms_per_image
+MobileNetV2,weighted_ce,30,24,0.8066298342541437,0.48995846291765816,0.8108263037957026,0.9116022099447514,3706961,21.137165937579994

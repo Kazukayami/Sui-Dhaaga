@@ -1,0 +1,44 @@
+{
+  "image": "C:\\Users\\NISHCHAY\\OneDrive\\Desktop\\test images\\download (2).jpg",
+  "prediction": {
+    "predicted_class": "weft_curling",
+    "display_class": "Unknown Defect / Manual Review",
+    "confidence": 0.279887318611145,
+    "defect_detected": true,
+    "defect_probability": 0.7418671250343323,
+    "clean_probability": 0.2581328749656677,
+    "needs_review": true,
+    "unknown_defect": true,
+    "uncertainty": {
+      "confidence": 0.279887318611145,
+      "margin": 0.021754443645477295,
+      "entropy": 2.0223315644885984,
+      "confidence_threshold": 0.58,
+      "margin_threshold": 0.12
+    },
+    "top_predictions": [
+      {
+        "class_name": "weft_curling",
+        "display_class": "Weft Curling",
+        "probability": 0.279887318611145
+      },
+      {
+        "class_name": "clean",
+        "display_class": "Clean",
+        "probability": 0.2581328749656677
+      },
+      {
+        "class_name": "horizontal_defect",
+        "display_class": "Horizontal Defect",
+        "probability": 0.16292110085487366
+      }
+    ]
+  },
+  "quality_score": 55,
+  "quality_tier": "Grade D - Reject",
+  "severity": "Review",
+  "severity_level": 1,
+  "original_asset": "C:\\Users\\NISHCHAY\\OneDrive\\Documents\\New project\\outputs\\paper_assets\\download_2_original.jpg",
+  "gradcam_asset": "C:\\Users\\NISHCHAY\\OneDrive\\Documents\\New project\\outputs\\paper_assets\\download_2_gradcam.png",
+  "side_by_side_asset": "C:\\Users\\NISHCHAY\\OneDrive\\Documents\\New project\\outputs\\paper_assets\\download_2_original_vs_gradcam.png"
+}
