@@ -508,13 +508,34 @@ def upload_predict_page() -> None:
             image_pil = Image.open(uploaded_file).convert("RGB")
             st.image(image_pil, caption="Uploaded Textile Sample", use_container_width=True)
             if st.button("Analyze Fabric", use_container_width=True):
-                predictor = load_predictor()
-                result = predictor.predict_pil(image_pil)
-                gradcam_path = load_gradcam().generate(image_pil, uploaded_file.name)
-                st.session_state["last_image"] = image_pil
-                st.session_state["last_result"] = result
-                st.session_state["last_gradcam_path"] = str(gradcam_path)
-                st.success("Inspection complete.")
+                try:
+                    predictor = load_predictor()
+                    result = predictor.predict_pil(image_pil)
+
+                    # Save prediction immediately, independently of Grad-CAM.
+                    st.session_state["last_image"] = image_pil
+                    st.session_state["last_result"] = result
+                    st.session_state["last_gradcam_path"] = None
+                    st.session_state["last_gradcam_error"] = None
+
+                    # Generate Grad-CAM separately.
+                    try:
+                        gradcam_path = load_gradcam().generate(
+                            image_pil, uploaded_file.name
+                        )
+                        st.session_state["last_gradcam_path"] = str(gradcam_path)
+                        st.success("Inspection and Grad-CAM completed.")
+
+                    except Exception as e:
+                        st.session_state["last_gradcam_error"] = str(e)
+                        st.warning(
+                            "Prediction completed, but Grad-CAM could not be generated. "
+                            "You can still view the prediction results."
+                        )
+                        st.error(f"Grad-CAM error: {e}")
+
+                except Exception as e:
+                    st.error(f"Prediction failed: {e}")
 
     with right:
         st.markdown('<div class="glass-card"><div class="card-title">Prediction Results</div>', unsafe_allow_html=True)
@@ -533,9 +554,21 @@ def explainable_ai_page() -> None:
 
     image = st.session_state["last_image"]
     gradcam_path = st.session_state.get("last_gradcam_path")
+
     if not gradcam_path or not Path(gradcam_path).exists():
-        gradcam_path = str(load_gradcam().generate(image, "inspection"))
-        st.session_state["last_gradcam_path"] = gradcam_path
+        try:
+            gradcam_path = str(
+                load_gradcam().generate(image, "inspection")
+            )
+            st.session_state["last_gradcam_path"] = gradcam_path
+            st.session_state["last_gradcam_error"] = None
+
+        except Exception as e:
+            st.warning("Grad-CAM is currently unavailable.")
+            st.error(f"Grad-CAM error: {e}")
+            st.markdown("#### Original Image")
+            st.image(image, use_container_width=True)
+            return
 
     col1, col2 = st.columns(2, gap="large")
     with col1:
