@@ -63,15 +63,17 @@ def evaluate() -> None:
         except ValueError:
             auc_value = np.nan
         auc_rows.append({"class_name": class_name, "roc_auc_ovr": auc_value})
-    try:
-        macro_auc = roc_auc_score(
-            y_true_one_hot,
-            probabilities,
-            average="macro",
-            multi_class="ovr",
-        )
-    except ValueError:
-        macro_auc = np.nan
+    valid_auc_values = [
+        row["roc_auc_ovr"]
+        for row in auc_rows
+        if np.isfinite(row["roc_auc_ovr"])
+    ]
+
+    macro_auc = (
+        float(np.mean(valid_auc_values))
+        if valid_auc_values
+        else np.nan
+    )
     auc_rows.append({"class_name": "macro_avg", "roc_auc_ovr": macro_auc})
     pd.DataFrame(auc_rows).to_csv(ROC_AUC_REPORT_PATH, index=False)
 
