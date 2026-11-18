@@ -12,4 +12,16 @@ _bullet_test.pdf
 # Keep the trained model and metadata available to the deployed app.
 models/*.h5
 outputs/gradcam/
-outputs/reports/
+# Keep generated evaluation reports deployable
+!outputs/reports/
+outputs/reports/*
+!outputs/reports/confusion_matrix.png
+!outputs/reports/binary_confusion_matrix.png
+!outputs/reports/classification_report.csv
+!outputs/reports/binary_classification_report.csv
+!outputs/reports/roc_auc_report.csv
+!outputs/reports/training_curves.png
+!outputs/reports/training_history.csv
+!outputs/reports/class_distribution.csv
+!outputs/reports/dataset_audit.json
+!outputs/reports/confusion_pairs.csv
